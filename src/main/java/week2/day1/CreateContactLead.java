@@ -4,9 +4,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.bcel.generic.Select;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 public class CreateContactLead {
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public void runCreateLead() {
 
 
         WebDriverManager.chromedriver().setup();
@@ -14,6 +18,7 @@ public class CreateContactLead {
         ChromeDriver driver = new ChromeDriver();
         driver.get("http://leaftaps.com/opentaps/control/main");
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         WebElement user = driver.findElementByXPath("//input[@id='username']");
         user.sendKeys("DemoSalesManager");
         driver.findElementByXPath("//input[@name='PASSWORD']").sendKeys("crmsfa");
@@ -27,7 +32,7 @@ public class CreateContactLead {
         driver.findElementById("createContactForm_lastNameLocal").sendKeys("yre");
         driver.findElementById("createContactForm_departmentName").sendKeys("cse");
         driver.findElementByXPath("//textarea[@id='createContactForm_description']").sendKeys("this is description box");
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         driver.findElementByXPath("//input[@id='createContactForm_primaryEmail']").sendKeys("ru@gmail.com");
         driver.findElementByClassName("smallSubmit").click();
         driver.findElementByLinkText("Edit").click();

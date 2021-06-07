@@ -4,13 +4,18 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 public class DuplicateLead {
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public  void Duplicate() {
         WebDriverManager.chromedriver().setup();
         ChromeDriver driver = new ChromeDriver();
         driver.get("http://leaftaps.com/opentaps/control/main");
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         WebElement user = driver.findElementByXPath("//input[@id='username']");
         user.sendKeys("DemoSalesManager");
         driver.findElementByXPath("//input[@name='PASSWORD']").sendKeys("crmsfa");
@@ -20,16 +25,16 @@ public class DuplicateLead {
         driver.findElementByLinkText("Find Leads").click();
         driver.findElementByLinkText("Email").click();
         driver.findElementByXPath("//input[@name='emailAddress']").sendKeys("rupa@gmail.com");
-        Thread.sleep(2000);
+       // Thread.sleep(2000);
         driver.findElementByXPath("//button[text()='Find Leads']").click();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         String capname = driver.findElementByXPath("(//div[@class='x-grid3-cell-inner x-grid3-col-companyName']/a)[1]").getText();
 
         driver.findElementByXPath("(//div[@class='x-grid3-cell-inner x-grid3-col-companyName']/a)[1]").click();
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
         driver.findElementByXPath("(//div[@class='frameSectionExtra']/a)[1]").click();
         Assert.assertEquals("Duplicate Lead | opentaps CRM", driver.getTitle());
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
         driver.findElementByXPath("//input[@value='Create Lead']").click();
         String dupcmpname = driver.findElementById("viewLead_companyName_sp").getText();
         String dup = dupcmpname.replaceAll("[0-9()]", "").trim();
