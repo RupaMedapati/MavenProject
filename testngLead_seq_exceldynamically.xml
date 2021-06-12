@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+    <suite name="TestCasesForLead">
+    <parameter name="url" value="http://leaftaps.com/opentaps/"></parameter>
+    <parameter name="username" value="DemoSalesManager"></parameter>
+    <parameter name="password" value="crmsfa"></parameter>
+        <test thread-count="3" name="runTestsForLead" verbose="5">
+            <classes>
+                <class name="Week5.day2.addExcelDataDynamically.CreateLead"/>
+                <class name="Week5.day2.addExcelDataDynamically.BaseClass"/>
+                <class name="Week5.day2.addExcelDataDynamically.EditLead"/>
+                <class name="Week5.day2.addExcelDataDynamically.DeleteLead"/>
+               <!-- <class name="testcase.DeleteLead"/>
+                <class name="testcase.DuplicateLead"/>
+                <class name="testcase.EditLead"/>
+                <class name="testcase.MergeLeadssss"/>-->
+            </classes>
+        </test> <!-- MavernProject -->
+    </suite> <!-- Default Suite -->

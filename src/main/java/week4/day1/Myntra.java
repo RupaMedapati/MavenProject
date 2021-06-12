@@ -61,11 +61,15 @@ public class Myntra {
             Thread.sleep(3000);
             Actions builder1=new Actions(driver);
             builder1.moveToElement(driver.findElementByXPath("//div[@class='sort-sortBy']")).pause(1100).click(driver.findElementByXPath("(//ul[@class='sort-list']//label)[3]")).perform();
+            Thread.sleep(3000);
             String cost=driver.findElementByXPath("//span[@class='product-discountedPrice'][1]").getText();
-            System.out.println(cost);
+
+            System.out.println(cost+"is the cost of first item");
+            Thread.sleep(4000);
             Actions builder2=new Actions(driver);
-            builder2.moveToElement(driver.findElementByXPath("//span[@class='product-discountedPrice'][1]")).pause(1000).click(driver.findElementByXPath("(//span[@class='product-wishlistFlex product-actionsButton product-wishlist '] )[1]")).perform();
-           // List<WebElement> discounts=driver.findElementsByXPath("//span[@class='product-discountPercentage']");
+            builder2.moveToElement(driver.findElementByXPath("(//img[@class='img-responsive'])[1]")).pause(1000).click(driver.findElementByXPath("(//span[@class='product-wishlistFlex product-actionsButton product-wishlist '])[1]")).perform();
+            driver.close();
+
 
 
 
